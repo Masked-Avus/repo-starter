@@ -9,6 +9,7 @@ namespace RepoStarter.ChangeLog
         ChangeLogFile? _changeLog;
 
         [Parameter]
+        [Alias("Dir")]
         public string? Directory { get; set; }
 
         [Parameter]
