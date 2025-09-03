@@ -23,57 +23,27 @@ namespace RepoStarter.ChangeLog
             }
             catch (ArgumentNullException exception)
             {
-                WriteError(new(
-                    exception,
-                    typeof(ArgumentNullException).Name,
-                    ErrorCategory.InvalidData,
-                    null
-                    ));
+                ErrorHandler.ReportException(this, exception, ErrorCategory.InvalidData);
             }
             catch (InvalidOperationException exception)
             {
-                WriteError(new(
-                    exception,
-                    typeof(InvalidOperationException).Name,
-                    ErrorCategory.InvalidOperation,
-                    null
-                    ));
+                ErrorHandler.ReportException(this, exception, ErrorCategory.InvalidOperation);
             }
             catch (FileNotFoundException exception)
             {
-                WriteError(new(
-                    exception,
-                    typeof(FileNotFoundException).Name,
-                    ErrorCategory.ReadError,
-                    null
-                    ));
+                ErrorHandler.ReportException(this, exception, ErrorCategory.ReadError);
             }
             catch (SecurityException exception)
             {
-                WriteError(new(
-                    exception,
-                    typeof(SecurityException).Name,
-                    ErrorCategory.SecurityError,
-                    null
-                    ));
+                ErrorHandler.ReportException(this, exception, ErrorCategory.SecurityError);
             }
             catch (PathTooLongException exception)
             {
-                WriteError(new(
-                    exception,
-                    typeof(PathTooLongException).Name,
-                    ErrorCategory.LimitsExceeded,
-                    null
-                    ));
+                ErrorHandler.ReportException(this, exception, ErrorCategory.LimitsExceeded);
             }
             catch (Exception exception)
             {
-                WriteError(new(
-                    exception,
-                    typeof(Exception).Name,
-                    ErrorCategory.SyntaxError,
-                    null
-                    ));
+                ErrorHandler.ReportException(this, exception, ErrorCategory.SyntaxError);
             }
         }
 
@@ -96,24 +66,12 @@ namespace RepoStarter.ChangeLog
 
             using StreamWriter writer = new(_changeLog.FullPath);
 
-            if (Versions is null)
+            for (int i = 0; i < _changeLog.VersionHeadings.Count; i++)
             {
-                return;
-            }
-
-            for (int i = 0; i < Versions.Length; i++)
-            {
-                string current = Versions[i];
-
-                if (string.IsNullOrWhiteSpace(current))
-                {
-                    continue;
-                }
-
-                writer.WriteLine(current);
+                writer.WriteLine(_changeLog.VersionHeadings[i].FormattedText);
                 writer.WriteLine(ChangeLogFile.VersionBody);
 
-                if (i < (Versions.Length - 1))
+                if (i < (_changeLog.VersionHeadings.Count - 1))
                 {
                     writer.WriteLine();
                 }

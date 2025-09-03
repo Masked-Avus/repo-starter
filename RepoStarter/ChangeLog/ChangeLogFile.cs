@@ -11,13 +11,13 @@ namespace RepoStarter.ChangeLog
 
         internal string Name => "CHANGELOG.md";
         internal string FullPath => _fileInfo.FullName;
-        internal List<Heading> Headings { get; } = [];
+        internal List<Heading> VersionHeadings { get; } = [];
 
         internal ChangeLogFile(string directory)
             => _fileInfo = new(CreatePath(directory, Name));
 
         internal ChangeLogFile(string directory, string[] versions) : this(directory)
-            => Headings = CreateHeadings(versions);
+            => VersionHeadings = CreateHeadings(versions);
 
         private static string CreatePath(string? directory, string fileName)
             => $"{directory}{Path.DirectorySeparatorChar}{fileName}";

@@ -37,48 +37,27 @@ namespace RepoStarter.ReadMe
             }
             catch (ArgumentNullException exception)
             {
-                WriteError(new(
-                    exception,
-                    typeof(ArgumentNullException).Name,
-                    ErrorCategory.InvalidData,
-                    null
-                    ));
+                ErrorHandler.ReportException(this, exception, ErrorCategory.InvalidData);
+            }
+            catch (InvalidOperationException exception)
+            {
+                ErrorHandler.ReportException(this, exception, ErrorCategory.InvalidOperation);
             }
             catch (FileNotFoundException exception)
             {
-                WriteError(new(
-                    exception,
-                    typeof(FileNotFoundException).Name,
-                    ErrorCategory.ReadError,
-                    null
-                    ));
+                ErrorHandler.ReportException(this, exception, ErrorCategory.ReadError);
             }
             catch (SecurityException exception)
             {
-                WriteError(new(
-                    exception,
-                    typeof(SecurityException).Name,
-                    ErrorCategory.SecurityError,
-                    null
-                    ));
+                ErrorHandler.ReportException(this, exception, ErrorCategory.SecurityError);
             }
             catch (PathTooLongException exception)
             {
-                WriteError(new(
-                    exception,
-                    typeof(PathTooLongException).Name,
-                    ErrorCategory.LimitsExceeded,
-                    null
-                    ));
+                ErrorHandler.ReportException(this, exception, ErrorCategory.LimitsExceeded);
             }
             catch (Exception exception)
             {
-                WriteError(new(
-                    exception,
-                    typeof(Exception).Name,
-                    ErrorCategory.SyntaxError,
-                    null
-                    ));
+                ErrorHandler.ReportException(this, exception, ErrorCategory.SyntaxError);
             }
         }
 
@@ -116,7 +95,7 @@ namespace RepoStarter.ReadMe
                 writer.WriteLine();
                 writer.WriteLine(ReadMeFile.SectionDefaultContents);
 
-                if (i < _readMeFile.Headings.Length - 1)
+                if (i < (_readMeFile.Headings.Length - 1))
                 {
                     writer.WriteLine();
                 }
@@ -127,7 +106,7 @@ namespace RepoStarter.ReadMe
         {
             if (_readMeFile is null)
             {
-                return;
+                throw new InvalidOperationException();
             }
 
             bool hasAbsoluteLogoPath = AbsoluteLogoPath is not null;
