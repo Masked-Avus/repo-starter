@@ -31,12 +31,7 @@ namespace RepoStarter.ReadMe
         {
             try
             {
-                if (ProjectName is null)
-                {
-                    throw new ArgumentNullException();
-                }
-
-                _readMeFile = new(ProjectName, Directory);
+                SetReadMeInfo();
                 SetLogoPath();
                 WriteReadMe();
             }
@@ -85,6 +80,16 @@ namespace RepoStarter.ReadMe
                     null
                     ));
             }
+        }
+
+        private void SetReadMeInfo()
+        {
+            if (ProjectName is null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            _readMeFile = new(ProjectName, Directory);
         }
 
         private void WriteReadMe()
