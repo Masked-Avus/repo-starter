@@ -21,7 +21,7 @@ namespace RepoStarter.GitRepository
         {
             if (ProjectName is null)
             {
-                ErrorHandler.ReportException(this, new ArgumentException(), ErrorCategory.InvalidArgument);
+                this.ReportException(new ArgumentNullException(), ErrorCategory.InvalidArgument);
                 return;
             }
 

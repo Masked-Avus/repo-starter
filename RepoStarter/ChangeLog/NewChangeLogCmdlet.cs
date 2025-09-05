@@ -27,27 +27,27 @@ namespace RepoStarter.ChangeLog
             }
             catch (ArgumentNullException exception)
             {
-                ErrorHandler.ReportException(this, exception, ErrorCategory.InvalidData);
+                this.ReportException(exception, ErrorCategory.InvalidData);
             }
             catch (InvalidOperationException exception)
             {
-                ErrorHandler.ReportException(this, exception, ErrorCategory.InvalidOperation);
+                this.ReportException(exception, ErrorCategory.InvalidOperation);
             }
             catch (FileNotFoundException exception)
             {
-                ErrorHandler.ReportException(this, exception, ErrorCategory.ReadError);
+                this.ReportException(exception, ErrorCategory.ReadError);
             }
             catch (SecurityException exception)
             {
-                ErrorHandler.ReportException(this, exception, ErrorCategory.SecurityError);
+                this.ReportException(exception, ErrorCategory.SecurityError);
             }
             catch (PathTooLongException exception)
             {
-                ErrorHandler.ReportException(this, exception, ErrorCategory.LimitsExceeded);
+                this.ReportException(exception, ErrorCategory.LimitsExceeded);
             }
             catch (Exception exception)
             {
-                ErrorHandler.ReportException(this, exception, ErrorCategory.SyntaxError);
+                this.ReportException(exception, ErrorCategory.SyntaxError);
             }
         }
 
