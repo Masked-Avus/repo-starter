@@ -13,6 +13,9 @@ namespace RepoStarter.ChangeLog
         public string? Directory { get; set; }
 
         [Parameter]
+        public string? Title { get; set; }
+
+        [Parameter]
         public string[]? Versions { get; set; }
 
         protected override void ProcessRecord()
@@ -50,12 +53,11 @@ namespace RepoStarter.ChangeLog
 
         private void SetChangeLogInfo()
         {
-            if (Directory is null)
-            {
-                Directory = System.IO.Directory.GetCurrentDirectory();
-            }
+            Directory ??= System.IO.Directory.GetCurrentDirectory();
+            Title ??= ChangeLogFile.DefaultTitle;
+            Versions ??= [];
 
-            _changeLog = (Versions is not null) ? new(Directory, Versions) : new(Directory);
+            _changeLog = new(Directory, Title, Versions);
         }
 
         private void WriteChangeLog()
@@ -66,6 +68,9 @@ namespace RepoStarter.ChangeLog
             }
 
             using StreamWriter writer = new(_changeLog.FullPath);
+
+            writer.WriteLine(_changeLog.Title.FormattedText);
+            writer.WriteLine();
 
             for (int i = 0; i < _changeLog.VersionHeadings.Count; i++)
             {

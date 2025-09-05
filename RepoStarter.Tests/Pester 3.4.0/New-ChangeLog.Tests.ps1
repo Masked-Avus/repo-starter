@@ -12,7 +12,7 @@ Describe "New-ChangeLog" {
             Remove-Item -Path $outputPath
         }
 
-        New-ChangeLog -Directory ".\Output\New-ChangeLog.Tests" -Versions "v.0.2.0","v0.1.0"
+        New-ChangeLog -Directory ".\Output\New-ChangeLog.Tests" -Title "This Project's Version History" -Versions "v.0.2.0","v0.1.0"
         
         It "creates CHANGELOG in output path" {
             Test-Path $outputPath | Should Be $true

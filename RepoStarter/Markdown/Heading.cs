@@ -57,5 +57,7 @@ namespace RepoStarter.Markdown
 
             return formattedText.ToString();
         }
+
+        public override string ToString() => FormattedText;
     }
 }
