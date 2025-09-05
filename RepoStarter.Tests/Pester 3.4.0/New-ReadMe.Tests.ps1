@@ -6,16 +6,13 @@ Describe "New-ReadMe" {
             New-Item -Path $outputDirectory -ItemType "Directory"
         }
 
-        $outputPath = ".\Output\New-ReadMe.Tests\README.md"
+        $outputPath = [System.String]::Concat($outputDirectory, "\README.md")
         
         if (Test-Path $outputPath) {
             Remove-Item -Path $outputPath
         }
 
-        $projectName = "Testing New-ReadMe"
-        $outputDirectory = ".\Output\New-ReadMe.Tests"
-
-        New-ReadMe -ProjectName $projectName -Directory $outputDirectory
+        New-ReadMe -ProjectName "Testing New-ReadMe" -Directory $outputDirectory
 
         It "creates README in output path" {
             Test-Path $outputPath | Should Be $true

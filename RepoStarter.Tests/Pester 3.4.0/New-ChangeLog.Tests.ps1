@@ -6,7 +6,7 @@ Describe "New-ChangeLog" {
             New-Item -Path $outputDirectory -ItemType "Directory"
         }
 
-        $outputPath = ".\Output\New-ChangeLog.Tests\CHANGELOG.md"
+        $outputPath = [System.String]::Concat($outputDirectory, "\CHANGELOG.md")
 
         if (Test-Path $outputPath) {
             Remove-Item -Path $outputPath

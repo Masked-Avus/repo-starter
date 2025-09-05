@@ -18,7 +18,7 @@ namespace RepoStarter.ReadMe
         internal Heading Title => Headings[0];
         internal bool HasLogo => Logo is not null;
 
-        internal ReadMeFile(string projectName, string? directory)
+        internal ReadMeFile(string projectName, string directory)
         {
             _projectName = !string.IsNullOrWhiteSpace(projectName)
                 ? projectName
