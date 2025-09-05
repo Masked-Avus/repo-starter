@@ -17,12 +17,8 @@ namespace RepoStarter.ReadMe
         public string? Directory { get; set; }
 
         [Parameter]
-        [Alias("AbsLogoPath", "ALP")]
-        public string? AbsoluteLogoPath { get; set; }
-
-        [Parameter]
-        [Alias("RelLogoPath", "LogoPath", "Logo", "RLP")]
-        public string? RelativeLogoPath { get; set; }
+        [Alias("Logo")]
+        public string? LogoPath { get; set; }
 
         [Parameter]
         public string? LogoText { get; set; }
@@ -32,7 +28,6 @@ namespace RepoStarter.ReadMe
             try
             {
                 SetReadMeInfo();
-                SetLogoPath();
                 WriteReadMe();
             }
             catch (ArgumentNullException exception)
@@ -71,6 +66,13 @@ namespace RepoStarter.ReadMe
             Directory ??= System.IO.Directory.GetCurrentDirectory();
 
             _readMeFile = new(ProjectName, Directory);
+
+            if (LogoPath is not null)
+            {
+                _readMeFile.Logo = (LogoText is not null)
+                    ? new(LogoPath, LogoText)
+                    : new(LogoPath);
+            }
         }
 
         private void WriteReadMe()
@@ -101,35 +103,6 @@ namespace RepoStarter.ReadMe
                 {
                     writer.WriteLine();
                 }
-            }
-        }
-
-        private void SetLogoPath()
-        {
-            if (_readMeFile is null)
-            {
-                throw new InvalidOperationException();
-            }
-
-            bool hasAbsoluteLogoPath = AbsoluteLogoPath is not null;
-            bool hasRelativeLogoPath = RelativeLogoPath is not null;
-
-            if (hasAbsoluteLogoPath && hasRelativeLogoPath)
-            {
-                WriteWarning(
-                    "Pathing conflict detected. " +
-                    "Both relative and absolute paths for logo provided. " +
-                    "Logo image pathing will default to relative path."
-                    );
-            }
-
-            if (hasRelativeLogoPath)
-            {
-                _readMeFile.Logo = new(Logo.CreateRelativePath(_readMeFile, RelativeLogoPath), LogoText);
-            }
-            else if (hasAbsoluteLogoPath)
-            {
-                _readMeFile.Logo = new(AbsoluteLogoPath, LogoText);
             }
         }
     }

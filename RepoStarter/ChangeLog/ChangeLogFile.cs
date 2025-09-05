@@ -1,5 +1,4 @@
 ﻿using RepoStarter.Markdown;
-using System.Management.Automation.Language;
 
 namespace RepoStarter.ChangeLog
 {

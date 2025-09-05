@@ -9,6 +9,8 @@
         internal string Text { get; }
         internal string Markdown => $"![{Text}]({File.FullName})";
 
+        internal Logo(string path) : this(path, DefaultText) { }
+
         internal Logo(string path, string text)
         {
             File = new FileInfo(path);
