@@ -30,10 +30,10 @@ New-ReadMe "My Project" -Directory ".\" -RelativeLogoPath "images/logo.myproject
 
 ### `New-ChangeLog` cmdlet
 
-The `New-ChangeLog` cmdlet will generate an empty `CHANGELOG.md` file by default. It can be generated in a specified path via the optional `-Directory` argument. If one wishes to generate headings for a list of different versions, a comma-separated list of version names can be provided as well.
+The `New-ChangeLog` cmdlet will generate an empty `CHANGELOG.md` file by default. It can be generated in a specified path via the optional `-Directory` argument. If one wishes to generate headings for a list of different versions, a comma-separated list of version names can be provided as well via the `-Versions` argument. These version names must be provided in *descending* order to ensure the later versions will appear first in the resulting file.
 
 ```powershell
-New-ChangeLog -Directory ".\" -Versions "v0.1.0", "v0.2.0"
+New-ChangeLog -Directory ".\" -Versions "v0.2.0", "v0.1.0"
 ```
 
 ### `NewGitRepository.psm1`
