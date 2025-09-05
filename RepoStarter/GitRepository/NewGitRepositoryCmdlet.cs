@@ -34,6 +34,7 @@ namespace RepoStarter.GitRepository
             instance.AddScript($"git init --initial-branch {DefaultBranch}");
             instance.CreateDirectory("src");
             instance.CreateDirectory("tests");
+            instance.CreateFile(".gitignore");
             instance.AddScript($"New-ReadMe -ProjectName {ProjectName} -Directory {Directory}");
             instance.AddScript($"New-ChangeLog -Directory {Directory}");
 

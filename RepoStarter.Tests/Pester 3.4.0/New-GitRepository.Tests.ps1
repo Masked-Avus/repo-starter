@@ -39,5 +39,11 @@ Describe "New-GitRepository" {
         It "creates a CHANGELOG in output path" {
             Test-Path $changeLogPath | Should Be $true
         }
+
+        $gitIgnorePath = [System.String]::Concat($outputDirectory, "\.gitignore")
+
+        It "creates a .gitignore in output path" {
+            Test-Path $gitIgnorePath | Should Be $true
+        }
     }
 }

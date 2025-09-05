@@ -4,6 +4,9 @@ namespace RepoStarter
 {
     internal static class Extensions
     {
+        internal static void CreateFile(this PowerShell instance, string file)
+            => instance.AddScript($"New-Item -ItemType \"File\" -Path \".\\{file}\"");
+
         internal static void CreateDirectory(this PowerShell instance, string name)
             => instance.AddScript($"New-Item -ItemType \"Directory\" -Path \".\\{name}\"");
 
