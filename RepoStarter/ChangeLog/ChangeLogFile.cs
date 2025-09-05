@@ -29,6 +29,11 @@ namespace RepoStarter.ChangeLog
 
         private static List<Heading> CreateHeadings(string[] versions)
         {
+            if (versions is null)
+            {
+                return [];
+            }
+
             List<Heading> headings = [];
 
             foreach (string version in versions)

@@ -68,6 +68,8 @@ namespace RepoStarter.ReadMe
                 throw new ArgumentNullException();
             }
 
+            Directory ??= System.IO.Directory.GetCurrentDirectory();
+
             _readMeFile = new(ProjectName, Directory);
         }
 
@@ -89,13 +91,13 @@ namespace RepoStarter.ReadMe
             writer.WriteLine(_readMeFile.Title.FormattedText);
             writer.WriteLine();
 
-            for (int i = 1; i < _readMeFile.Headings.Length; i++)
+            for (int i = 1; i < _readMeFile.Headings.Count; i++)
             {
                 writer.WriteLine(_readMeFile.Headings[i].FormattedText);
                 writer.WriteLine();
                 writer.WriteLine(ReadMeFile.SectionDefaultContents);
 
-                if (i < (_readMeFile.Headings.Length - 1))
+                if (i < (_readMeFile.Headings.Count - 1))
                 {
                     writer.WriteLine();
                 }

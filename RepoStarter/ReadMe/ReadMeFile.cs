@@ -14,9 +14,8 @@ namespace RepoStarter.ReadMe
         internal string FullPath => _fileInfo.FullName;
         internal DirectoryInfo? Directory => _fileInfo.Directory;
         internal Logo? Logo { get; set; }
-        internal Heading[] Headings { get; }
+        internal List<Heading> Headings { get; }
         internal Heading Title => Headings[0];
-
         internal bool HasLogo => Logo is not null;
 
         internal ReadMeFile(string projectName, string? directory)
