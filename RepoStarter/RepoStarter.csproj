@@ -11,4 +11,46 @@
     <PackageReference Include="Microsoft.PowerShell.5.1.ReferenceAssemblies" Version="1.0.0" PrivateAssets="all" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Resources\Placeholders.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Placeholders.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\LicenseTemplates\LicenseTemplates.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LicenseTemplates.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ItemNames.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ItemNames.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\LicenseTemplates\LicenseTemplates.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LicenseTemplates.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Placeholders.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Placeholders.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\LicenseTemplates\LicenseTemplates.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LicenseTemplates.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ItemNames.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ItemNames.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\LicenseTemplates\LicenseTemplates.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LicenseTemplates.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>
