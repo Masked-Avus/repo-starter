@@ -39,7 +39,9 @@ namespace RepoStarter.License
             {
                 if (!_project.HasOrganization)
                 {
-                    throw new InvalidOperationException("Organization name missing.");
+                    throw new InvalidOperationException(
+                        $"Organization name required for {_license.Name} license."
+                        );
                 }
 
                 builder.Replace(Resources.Placeholders.Organization, _project.Organization);
@@ -49,7 +51,9 @@ namespace RepoStarter.License
             {
                 if (!_project.HasName)
                 {
-                    throw new InvalidOperationException("Project name missing.");
+                    throw new InvalidOperationException(
+                        $"Project name required for {_license.Name} license."
+                        );
                 }
 
                 builder.Replace(Resources.Placeholders.Project, _project.Name);

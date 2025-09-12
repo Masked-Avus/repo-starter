@@ -5,8 +5,8 @@
         internal string? Name { get; }
         internal string? Organization { get; }
         internal int Year { get; }
-        internal bool HasName => Name is not null || (Name?.Length == 0);
-        internal bool HasOrganization => Organization is not null || (Organization?.Length == 0);
+        internal bool HasName => Name is not null && (Name?.Length > 0);
+        internal bool HasOrganization => Organization is not null && (Organization?.Length > 0);
 
         internal Project(string name, string organization, int year)
         {
