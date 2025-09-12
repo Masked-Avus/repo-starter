@@ -9,12 +9,12 @@ namespace RepoStarter.License
         private LicenseFile? _licenseFile;
 
         [Parameter(Mandatory = true)]
-        [Alias("Lic")]
-        public string? License { get; set; }
+        [Alias("License", "Lic")]
+        public string? LicenseType { get; set; }
 
         [Parameter]
-        [Alias("Proj")]
-        public string? Project { get; set; }
+        [Alias("Project", "Proj")]
+        public string? ProjectName { get; set; }
 
         [Parameter]
         public int Year { get; set; } = DateTime.Now.Year;
@@ -66,12 +66,12 @@ namespace RepoStarter.License
 
         private void SetLicenseInfo()
         {
-            Project ??= string.Empty;
+            ProjectName ??= string.Empty;
             Organization ??= string.Empty;
-            Project project = new(Project, Organization, Year);
+            Project project = new(ProjectName, Organization, Year);
 
-            License ??= string.Empty;
-            License license = new(License);
+            LicenseType ??= string.Empty;
+            License license = new(LicenseType);
 
             Directory ??= System.IO.Directory.GetCurrentDirectory();
 
