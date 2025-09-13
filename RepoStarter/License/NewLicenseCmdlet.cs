@@ -1,4 +1,5 @@
-﻿using System.Management.Automation;
+﻿using RepoStarter.Utilities;
+using System.Management.Automation;
 using System.Security;
 
 namespace RepoStarter.License
@@ -6,33 +7,36 @@ namespace RepoStarter.License
     [Cmdlet(VerbsCommon.New, AttributeConstants.License)]
     public sealed class NewLicenseCmdlet : Cmdlet
     {
-        private LicenseFile? _licenseFile;
-
         [Parameter(Mandatory = true)]
         [Alias(AttributeConstants.License, AttributeConstants.Abbreviations.License)]
-        public string? LicenseType { get; set; }
+        public string LicenseType { get; set; } = string.Empty;
 
         [Parameter]
         [Alias(AttributeConstants.Project, AttributeConstants.Abbreviations.Project)]
-        public string? ProjectName { get; set; }
+        public string ProjectName { get; set; } = string.Empty;
 
         [Parameter]
         public int Year { get; set; } = DateTime.Now.Year;
 
         [Parameter]
         [Alias(AttributeConstants.Abbreviations.Organization)]
-        public string? Organization { get; set; }
+        public string Organization { get; set; } = string.Empty;
 
         [Parameter]
         [Alias(AttributeConstants.Abbreviations.Directory)]
-        public string? Directory { get; set; }
+        public string Directory { get; set; } = System.IO.Directory.GetCurrentDirectory();
 
-        protected override void ProcessRecord()
+        public void Initiate()
         {
             try
             {
-                SetLicenseInfo();
-                _licenseFile?.Write();
+                RepositoryPath.EnsureDirectoryExists(Directory);
+
+                Project project = new(ProjectName, Organization, Year);
+                License license = new(LicenseType);
+
+                LicenseFile licenseFile = new(license, project, Directory);
+                licenseFile.Write();
             }
             catch (ArgumentNullException exception)
             {
@@ -64,18 +68,6 @@ namespace RepoStarter.License
             }
         }
 
-        private void SetLicenseInfo()
-        {
-            ProjectName ??= string.Empty;
-            Organization ??= string.Empty;
-            Project project = new(ProjectName, Organization, Year);
-
-            LicenseType ??= string.Empty;
-            License license = new(LicenseType);
-
-            Directory ??= System.IO.Directory.GetCurrentDirectory();
-
-            _licenseFile = new(license, project, Directory);
-        }
+        protected override void ProcessRecord() => Initiate();
     }
 }

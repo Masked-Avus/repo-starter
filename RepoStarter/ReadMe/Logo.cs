@@ -20,15 +20,5 @@
 
             Text = !string.IsNullOrWhiteSpace(text) ? text : Resources.Defaults.LogoText;
         }
-
-        internal static string CreateRelativePath(ReadMeFile readme, string relativePath)
-        {
-            if (readme.Directory is null)
-            {
-                throw new ArgumentNullException(nameof(readme.Directory));
-            }
-
-            return $"{readme.Directory.FullName}{Path.DirectorySeparatorChar}{relativePath}";
-        }
     }
 }

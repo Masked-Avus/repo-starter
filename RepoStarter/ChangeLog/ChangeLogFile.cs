@@ -1,4 +1,5 @@
 ﻿using RepoStarter.Markdown;
+using RepoStarter.Utilities;
 
 namespace RepoStarter.ChangeLog
 {
@@ -8,22 +9,35 @@ namespace RepoStarter.ChangeLog
 
         private readonly FileInfo _fileInfo;
         private readonly Heading _title = new(1, Resources.Defaults.ChangeLogTitle);
-
-        internal Heading Title => _title;
-        internal string FullPath => _fileInfo.FullName;
-        internal List<Heading> VersionHeadings { get; } = [];
+        private readonly List<Heading> _versionHeadings = [];
 
         internal ChangeLogFile(string directory, string title, string[] versions)
         {
-            _fileInfo = new(CreatePath(directory, Resources.ItemNames.ChangeLog));
+            _fileInfo = new(RepositoryPath.Create(directory, Resources.ItemNames.ChangeLog));
             _title = new(1, (!string.IsNullOrWhiteSpace(title))
                 ? title
                 : Resources.Defaults.ChangeLogTitle);
-            VersionHeadings = CreateHeadings(versions);
+            _versionHeadings = CreateHeadings(versions);
         }
 
-        private static string CreatePath(string? directory, string fileName)
-            => $"{directory}{Path.DirectorySeparatorChar}{fileName}";
+        internal void Write()
+        {
+            using StreamWriter writer = new(_fileInfo.FullName);
+
+            writer.WriteLine(_title.FormattedText);
+            writer.WriteLine();
+
+            for (int i = 0; i < _versionHeadings.Count; i++)
+            {
+                writer.WriteLine(_versionHeadings[i].FormattedText);
+                writer.WriteLine(Resources.Defaults.ChangeLogBody);
+
+                if (i < (_versionHeadings.Count - 1))
+                {
+                    writer.WriteLine();
+                }
+            }
+        }
 
         private static List<Heading> CreateHeadings(string[] versions)
         {

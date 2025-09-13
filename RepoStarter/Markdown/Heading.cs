@@ -13,7 +13,7 @@ namespace RepoStarter.Markdown
         {
             get => _level;
 
-            set
+            private set
             {
                 if (value > MaxLevel)
                 {

@@ -1,4 +1,5 @@
-﻿using System.Management.Automation;
+﻿using RepoStarter.Utilities;
+using System.Management.Automation;
 using System.Security;
 
 namespace RepoStarter.ReadMe
@@ -6,29 +7,42 @@ namespace RepoStarter.ReadMe
     [Cmdlet(VerbsCommon.New, AttributeConstants.ReadMe)]
     public sealed class NewReadMeCmdlet : Cmdlet
     {
-        private ReadMeFile? _readMeFile;
-
         [Parameter(Mandatory = true)]
         [Alias(AttributeConstants.Project, AttributeConstants.Abbreviations.Project)]
-        public string? ProjectName { get; set; }
+        public string ProjectName { get; set; } = string.Empty;
 
         [Parameter]
         [Alias(AttributeConstants.Abbreviations.Directory)]
-        public string? Directory { get; set; }
+        public string Directory { get; set; } = System.IO.Directory.GetCurrentDirectory();
 
         [Parameter]
         [Alias(AttributeConstants.Abbreviations.LogoPath)]
-        public string? LogoPath { get; set; }
+        public string LogoPath { get; set; } = string.Empty;
 
         [Parameter]
-        public string? LogoText { get; set; }
+        public string LogoText { get; set; } = Resources.Defaults.LogoText;
 
-        protected override void ProcessRecord()
+        public void Initiate()
         {
             try
             {
-                SetReadMeInfo();
-                WriteReadMe();
+                if (string.IsNullOrWhiteSpace(ProjectName))
+                {
+                    throw new ArgumentNullException();
+                }
+
+                RepositoryPath.EnsureDirectoryExists(Directory);
+
+                ReadMeFile readMeFile = new(ProjectName, Directory);
+
+                if (!string.IsNullOrWhiteSpace(LogoPath))
+                {
+                    readMeFile.Logo = (LogoText is not null)
+                        ? new(LogoPath, LogoText)
+                        : new(LogoPath);
+                }
+
+                readMeFile.Write();
             }
             catch (ArgumentNullException exception)
             {
@@ -56,54 +70,6 @@ namespace RepoStarter.ReadMe
             }
         }
 
-        private void SetReadMeInfo()
-        {
-            if (ProjectName is null)
-            {
-                throw new ArgumentNullException();
-            }
-
-            Directory ??= System.IO.Directory.GetCurrentDirectory();
-
-            _readMeFile = new(ProjectName, Directory);
-
-            if (LogoPath is not null)
-            {
-                _readMeFile.Logo = (LogoText is not null)
-                    ? new(LogoPath, LogoText)
-                    : new(LogoPath);
-            }
-        }
-
-        private void WriteReadMe()
-        {
-            if (_readMeFile is null)
-            {
-                return;
-            }
-
-            using StreamWriter writer = new(_readMeFile.FullPath);
-
-            if (_readMeFile.Logo is not null && _readMeFile.Logo.Exists)
-            {
-                writer.WriteLine(_readMeFile.Logo.Markdown);
-                writer.WriteLine();
-            }
-
-            writer.WriteLine(_readMeFile.Title.FormattedText);
-            writer.WriteLine();
-
-            for (int i = 1; i < _readMeFile.Headings.Count; i++)
-            {
-                writer.WriteLine(_readMeFile.Headings[i].FormattedText);
-                writer.WriteLine();
-                writer.WriteLine(Resources.Defaults.ReadMeSectionContents);
-
-                if (i < (_readMeFile.Headings.Count - 1))
-                {
-                    writer.WriteLine();
-                }
-            }
-        }
+        protected override void ProcessRecord() => Initiate();
     }
 }

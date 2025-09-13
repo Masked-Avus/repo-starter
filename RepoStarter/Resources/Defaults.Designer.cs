@@ -79,15 +79,6 @@ namespace RepoStarter.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .\.
-        /// </summary>
-        internal static string CurrentDirectory {
-            get {
-                return ResourceManager.GetString("CurrentDirectory", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Heading.
         /// </summary>
         internal static string HeadingText {

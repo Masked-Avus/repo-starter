@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using RepoStarter.Utilities;
+using System.Text;
 
 namespace RepoStarter.License
 {
@@ -19,7 +20,7 @@ namespace RepoStarter.License
                 ? directory
                 : Directory.GetCurrentDirectory();
 
-            _fileInfo = new($"{directory}{Path.DirectorySeparatorChar}{Resources.ItemNames.License}");
+            _fileInfo = new(RepositoryPath.Create(directory, Resources.ItemNames.License));
         }
 
         public void Write() => File.WriteAllText(_fileInfo.FullName, _contents);

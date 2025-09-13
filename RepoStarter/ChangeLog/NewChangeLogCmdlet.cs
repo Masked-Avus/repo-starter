@@ -1,4 +1,5 @@
-﻿using System.Management.Automation;
+﻿using RepoStarter.Utilities;
+using System.Management.Automation;
 using System.Security;
 
 namespace RepoStarter.ChangeLog
@@ -6,24 +7,24 @@ namespace RepoStarter.ChangeLog
     [Cmdlet(VerbsCommon.New, AttributeConstants.ChangeLog)]
     public sealed class NewChangeLogCmdlet : Cmdlet
     {
-        ChangeLogFile? _changeLog;
-
         [Parameter]
         [Alias(AttributeConstants.Abbreviations.Directory)]
-        public string? Directory { get; set; }
+        public string Directory { get; set; } = System.IO.Directory.GetCurrentDirectory();
 
         [Parameter]
-        public string? Title { get; set; }
+        public string Title { get; set; } = Resources.Defaults.ChangeLogTitle;
 
         [Parameter]
-        public string[]? Versions { get; set; }
+        public string[] Versions { get; set; } = [];
 
-        protected override void ProcessRecord()
+        public void Initiate()
         {
             try
             {
-                SetChangeLogInfo();
-                WriteChangeLog();
+                RepositoryPath.EnsureDirectoryExists(Directory);
+
+                ChangeLogFile _changeLog = new(Directory, Title, Versions);
+                _changeLog.Write();
             }
             catch (ArgumentNullException exception)
             {
@@ -51,37 +52,6 @@ namespace RepoStarter.ChangeLog
             }
         }
 
-        private void SetChangeLogInfo()
-        {
-            Directory ??= System.IO.Directory.GetCurrentDirectory();
-            Title ??= Resources.Defaults.ChangeLogTitle;
-            Versions ??= [];
-
-            _changeLog = new(Directory, Title, Versions);
-        }
-
-        private void WriteChangeLog()
-        {
-            if (_changeLog is null)
-            {
-                throw new InvalidOperationException();
-            }
-
-            using StreamWriter writer = new(_changeLog.FullPath);
-
-            writer.WriteLine(_changeLog.Title.FormattedText);
-            writer.WriteLine();
-
-            for (int i = 0; i < _changeLog.VersionHeadings.Count; i++)
-            {
-                writer.WriteLine(_changeLog.VersionHeadings[i].FormattedText);
-                writer.WriteLine(Resources.Defaults.ChangeLogBody);
-
-                if (i < (_changeLog.VersionHeadings.Count - 1))
-                {
-                    writer.WriteLine();
-                }
-            }
-        }
+        protected override void ProcessRecord() => Initiate();
     }
 }

@@ -123,9 +123,6 @@
   <data name="ChangeLogTitle" xml:space="preserve">
     <value>Version History</value>
   </data>
-  <data name="CurrentDirectory" xml:space="preserve">
-    <value>.\</value>
-  </data>
   <data name="HeadingText" xml:space="preserve">
     <value>Heading</value>
   </data>
