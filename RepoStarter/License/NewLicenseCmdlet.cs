@@ -1,30 +1,31 @@
-﻿using System.Management.Automation;
+﻿using RepoStarter.Utilities;
+using System.Management.Automation;
 using System.Security;
 
 namespace RepoStarter.License
 {
-    [Cmdlet(VerbsCommon.New, "License")]
+    [Cmdlet(VerbsCommon.New, AttributeConstants.License)]
     public sealed class NewLicenseCmdlet : Cmdlet
     {
         private LicenseFile? _licenseFile;
 
         [Parameter(Mandatory = true)]
-        [Alias("License", "Lic")]
+        [Alias(AttributeConstants.License, AttributeConstants.Abbreviations.License)]
         public string? LicenseType { get; set; }
 
         [Parameter]
-        [Alias("Project", "Proj")]
+        [Alias(AttributeConstants.Project, AttributeConstants.Abbreviations.Project)]
         public string? ProjectName { get; set; }
 
         [Parameter]
         public int Year { get; set; } = DateTime.Now.Year;
 
         [Parameter]
-        [Alias("Org")]
+        [Alias(AttributeConstants.Abbreviations.Organization)]
         public string? Organization { get; set; }
 
         [Parameter]
-        [Alias("Dir")]
+        [Alias(AttributeConstants.Abbreviations.Directory)]
         public string? Directory { get; set; }
 
         protected override void ProcessRecord()

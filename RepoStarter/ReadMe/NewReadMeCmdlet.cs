@@ -3,21 +3,21 @@ using System.Security;
 
 namespace RepoStarter.ReadMe
 {
-    [Cmdlet(VerbsCommon.New, "ReadMe")]
+    [Cmdlet(VerbsCommon.New, AttributeConstants.ReadMe)]
     public sealed class NewReadMeCmdlet : Cmdlet
     {
         private ReadMeFile? _readMeFile;
 
         [Parameter(Mandatory = true)]
-        [Alias("Project", "Proj")]
+        [Alias(AttributeConstants.Project, AttributeConstants.Abbreviations.Project)]
         public string? ProjectName { get; set; }
 
         [Parameter]
-        [Alias("Dir")]
+        [Alias(AttributeConstants.Abbreviations.Directory)]
         public string? Directory { get; set; }
 
         [Parameter]
-        [Alias("Logo")]
+        [Alias(AttributeConstants.Abbreviations.LogoPath)]
         public string? LogoPath { get; set; }
 
         [Parameter]

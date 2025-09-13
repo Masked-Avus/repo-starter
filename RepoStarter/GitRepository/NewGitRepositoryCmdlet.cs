@@ -2,27 +2,31 @@
 
 namespace RepoStarter.GitRepository
 {
-    [Cmdlet(VerbsCommon.New, "GitRepository")]
+    [Cmdlet(VerbsCommon.New, AttributeConstants.GitRepository)]
     public sealed class NewGitRepositoryCmdlet : Cmdlet
     {
         [Parameter(Mandatory = true)]
-        [Alias("Project", "Proj")]
+        [Alias(AttributeConstants.Project, AttributeConstants.Abbreviations.Project)]
         public string? ProjectName { get; set; }
 
         [Parameter(Mandatory = true)]
-        [Alias("Org")]
+        [Alias(AttributeConstants.Abbreviations.Organization)]
         public string? Organization { get; set; }
 
         [Parameter(Mandatory = true)]
-        [Alias("License", "Lic")]
+        [Alias(AttributeConstants.License, AttributeConstants.Abbreviations.License)]
         public string? LicenseType { get; set; }
 
         [Parameter]
-        [Alias("Dir")]
+        [Alias(AttributeConstants.Abbreviations.Directory)]
         public string? Directory { get; set; }
 
         [Parameter]
-        [Alias("InitialBranch", "Branch", "Br")]
+        [Alias(
+            AttributeConstants.InitialBranch,
+            AttributeConstants.Branch,
+            AttributeConstants.Abbreviations.Branch
+            )]
         public string? DefaultBranch { get; set; }
 
         [Parameter]

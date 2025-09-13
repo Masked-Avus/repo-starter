@@ -3,13 +3,13 @@ using System.Security;
 
 namespace RepoStarter.ChangeLog
 {
-    [Cmdlet(VerbsCommon.New, "ChangeLog")]
+    [Cmdlet(VerbsCommon.New, AttributeConstants.ChangeLog)]
     public sealed class NewChangeLogCmdlet : Cmdlet
     {
         ChangeLogFile? _changeLog;
 
         [Parameter]
-        [Alias("Dir")]
+        [Alias(AttributeConstants.Abbreviations.Directory)]
         public string? Directory { get; set; }
 
         [Parameter]

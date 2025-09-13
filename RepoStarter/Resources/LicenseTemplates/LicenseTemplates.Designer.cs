@@ -75,8 +75,7 @@ namespace RepoStarter.Resources.LicenseTemplates {
         ///    &quot;Licensor&quot; shall mean the copyright owner or entity authorized by the
         ///    copyright owner that is granting the License.
         ///
-        ///    &quot;Legal Entity&quot; shall mean the union of the acting entity and all other
-        ///    entitie [rest of string was truncated]&quot;;.
+        ///    &quot;Legal Entity&quot; shall mean the union of the acting entity and all oth [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Apache {
             get {
@@ -95,8 +94,7 @@ namespace RepoStarter.Resources.LicenseTemplates {
         ///    * Redistributions of source code must retain the above copyright notice,
         ///      this list of conditions and the following disclaimer.
         ///    * Redistributions in binary form must reproduce the above copyright notice,
-        ///      this list of conditions and the following disclaimer in the documentation
-        ///    [rest of string was truncated]&quot;;.
+        ///      this list of conditions and the following disclaimer in the documen [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Bsd3 {
             get {
@@ -118,7 +116,7 @@ namespace RepoStarter.Resources.LicenseTemplates {
         ///software and other kinds of works.
         ///
         ///  The licenses for most software and other practical works are designed
-        ///to take away your freedom to share  [rest of string was truncated]&quot;;.
+        ///to take away your free [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Gpl3 {
             get {
@@ -138,7 +136,7 @@ namespace RepoStarter.Resources.LicenseTemplates {
         ///copies of the Software, and to permit persons to whom the Software is
         ///furnished to do so, subject to the following conditions:
         ///
-        ///The above copyright  [rest of string was truncated]&quot;;.
+        ///The above [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Mit {
             get {
@@ -163,7 +161,7 @@ namespace RepoStarter.Resources.LicenseTemplates {
         ///    means Covered Software of a particular Contributor.
         ///
         ///    1.4. “Covered Software”
-        ///    means Source Code Form to which  [rest of string was truncated]&quot;;.
+        ///    means Source Cod [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Mpl {
             get {
@@ -182,7 +180,7 @@ namespace RepoStarter.Resources.LicenseTemplates {
         ///In jurisdictions that recognize copyright laws, the author or authors
         ///of this software dedicate any and all copyright interest in the
         ///software to the public domain. We make this dedication for the benefit
-        ///of the public at large and [rest of string was truncated]&quot;;.
+        ///of the public at [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Public {
             get {
@@ -201,7 +199,7 @@ namespace RepoStarter.Resources.LicenseTemplates {
         ///In jurisdictions that recognize copyright laws, the author or authors
         ///of this software dedicate any and all copyright interest in the
         ///software to the public domain. We make this dedication for the benefit
-        ///of the public at large and [rest of string was truncated]&quot;;.
+        ///of the public at [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string PublicDomain {
             get {
@@ -221,7 +219,7 @@ namespace RepoStarter.Resources.LicenseTemplates {
         ///freely, subject to the following restrictions:
         ///
         ///   1. The origin of this software must not be misrepresented; you must not
-        ///   claim that you wrote the [rest of string was truncated]&quot;;.
+        ///   claim that yo [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Zlib {
             get {
