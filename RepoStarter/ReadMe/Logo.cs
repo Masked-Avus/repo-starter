@@ -2,14 +2,12 @@
 {
     internal sealed class Logo
     {
-        private const string DefaultText = "logo";
-
         internal FileInfo File { get; }
         internal bool Exists => File is not null;
         internal string Text { get; }
         internal string Markdown => $"![{Text}]({File.FullName})";
 
-        internal Logo(string path) : this(path, DefaultText) { }
+        internal Logo(string path) : this(path, Resources.Defaults.LogoText) { }
 
         internal Logo(string path, string text)
         {
@@ -20,7 +18,7 @@
                 throw new FileNotFoundException();
             }
 
-            Text = !string.IsNullOrWhiteSpace(text) ? text : DefaultText;
+            Text = !string.IsNullOrWhiteSpace(text) ? text : Resources.Defaults.LogoText;
         }
 
         internal static string CreateRelativePath(ReadMeFile readme, string relativePath)

@@ -117,22 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ChangeLog" xml:space="preserve">
-    <value>CHANGELOG.md</value>
+  <data name="Contributors" xml:space="preserve">
+    <value>Contributors</value>
   </data>
-  <data name="GitIgnore" xml:space="preserve">
-    <value>.gitignore</value>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
   </data>
-  <data name="License" xml:space="preserve">
-    <value>LICENSE.md</value>
+  <data name="DevelopmentRoadmap" xml:space="preserve">
+    <value>Development Roadmap</value>
   </data>
-  <data name="ReadMe" xml:space="preserve">
-    <value>README.md</value>
+  <data name="Features" xml:space="preserve">
+    <value>Features</value>
   </data>
-  <data name="SourceFolder" xml:space="preserve">
-    <value>src</value>
+  <data name="Installation" xml:space="preserve">
+    <value>Installation</value>
   </data>
-  <data name="TestsFolder" xml:space="preserve">
-    <value>tests</value>
+  <data name="Usage" xml:space="preserve">
+    <value>Usage</value>
   </data>
 </root>

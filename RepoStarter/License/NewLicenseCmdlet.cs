@@ -1,5 +1,4 @@
-﻿using RepoStarter.Utilities;
-using System.Management.Automation;
+﻿using System.Management.Automation;
 using System.Security;
 
 namespace RepoStarter.License

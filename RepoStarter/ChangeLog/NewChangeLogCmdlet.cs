@@ -54,7 +54,7 @@ namespace RepoStarter.ChangeLog
         private void SetChangeLogInfo()
         {
             Directory ??= System.IO.Directory.GetCurrentDirectory();
-            Title ??= ChangeLogFile.DefaultTitle;
+            Title ??= Resources.Defaults.ChangeLogTitle;
             Versions ??= [];
 
             _changeLog = new(Directory, Title, Versions);
@@ -75,7 +75,7 @@ namespace RepoStarter.ChangeLog
             for (int i = 0; i < _changeLog.VersionHeadings.Count; i++)
             {
                 writer.WriteLine(_changeLog.VersionHeadings[i].FormattedText);
-                writer.WriteLine(ChangeLogFile.VersionBody);
+                writer.WriteLine(Resources.Defaults.ChangeLogBody);
 
                 if (i < (_changeLog.VersionHeadings.Count - 1))
                 {

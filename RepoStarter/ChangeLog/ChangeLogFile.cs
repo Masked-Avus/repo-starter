@@ -4,22 +4,21 @@ namespace RepoStarter.ChangeLog
 {
     internal sealed class ChangeLogFile
     {
-        internal const string DefaultTitle = "Version History";
-        internal const string VersionBody = "- ";
         private const int HeadingLevel = 2;
 
         private readonly FileInfo _fileInfo;
-        private readonly Heading _title = new(1, DefaultTitle);
+        private readonly Heading _title = new(1, Resources.Defaults.ChangeLogTitle);
 
-        internal string Name => "CHANGELOG.md";
         internal Heading Title => _title;
         internal string FullPath => _fileInfo.FullName;
         internal List<Heading> VersionHeadings { get; } = [];
 
         internal ChangeLogFile(string directory, string title, string[] versions)
         {
-            _fileInfo = new(CreatePath(directory, Name));
-            _title = new(1, (!string.IsNullOrWhiteSpace(title)) ? title : DefaultTitle);
+            _fileInfo = new(CreatePath(directory, Resources.ItemNames.ChangeLog));
+            _title = new(1, (!string.IsNullOrWhiteSpace(title))
+                ? title
+                : Resources.Defaults.ChangeLogTitle);
             VersionHeadings = CreateHeadings(versions);
         }
 

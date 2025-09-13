@@ -12,6 +12,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Resources\Defaults.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Defaults.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Placeholders.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -32,9 +37,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>LicenseTemplates.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\ReadMeHeadings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ReadMeHeadings.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\Defaults.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Defaults.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Placeholders.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Placeholders.Designer.cs</LastGenOutput>
@@ -50,6 +64,10 @@
     <EmbeddedResource Update="Resources\LicenseTemplates\LicenseTemplates.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LicenseTemplates.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ReadMeHeadings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ReadMeHeadings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

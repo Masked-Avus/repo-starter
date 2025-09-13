@@ -117,22 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ChangeLog" xml:space="preserve">
-    <value>CHANGELOG.md</value>
+  <data name="ChangeLogBody" xml:space="preserve">
+    <value> -</value>
   </data>
-  <data name="GitIgnore" xml:space="preserve">
-    <value>.gitignore</value>
+  <data name="ChangeLogTitle" xml:space="preserve">
+    <value>Version History</value>
   </data>
-  <data name="License" xml:space="preserve">
-    <value>LICENSE.md</value>
+  <data name="CurrentDirectory" xml:space="preserve">
+    <value>.\</value>
   </data>
-  <data name="ReadMe" xml:space="preserve">
-    <value>README.md</value>
+  <data name="HeadingText" xml:space="preserve">
+    <value>Heading</value>
   </data>
-  <data name="SourceFolder" xml:space="preserve">
-    <value>src</value>
+  <data name="InitialBranch" xml:space="preserve">
+    <value>master</value>
   </data>
-  <data name="TestsFolder" xml:space="preserve">
-    <value>tests</value>
+  <data name="LogoText" xml:space="preserve">
+    <value>logo</value>
+  </data>
+  <data name="ProjectName" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="ReadMeSectionContents" xml:space="preserve">
+    <value>TODO</value>
   </data>
 </root>

@@ -4,8 +4,6 @@ namespace RepoStarter.License
 {
     internal sealed class LicenseFile
     {
-        internal const string DefaultProjectName = "Project";
-
         private readonly FileInfo _fileInfo;
         private readonly License _license;
         private readonly Project _project;

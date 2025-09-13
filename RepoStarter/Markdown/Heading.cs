@@ -4,8 +4,6 @@ namespace RepoStarter.Markdown
 {
     internal sealed class Heading
     {
-        private const char Marker = '#';
-        private const string DefaultText = "Heading";
         private const int MinLevel = 1;
         private const int MaxLevel = 6;
 
@@ -39,17 +37,18 @@ namespace RepoStarter.Markdown
         internal Heading(int level, string text)
         {
             Level = level;
-            Text = !string.IsNullOrEmpty(text) ? text : DefaultText;
+            Text = !string.IsNullOrEmpty(text) ? text : Resources.Defaults.HeadingText;
             FormattedText = CreateFormattedText(Level, Text);
         }
 
         private static string CreateFormattedText(int level, string text)
         {
             StringBuilder formattedText = new(100);
+            const char Delimiter = '#';
 
             for (int i = 0; i < level; i++)
             {
-                formattedText.Append(Marker);
+                formattedText.Append(Delimiter);
             }
 
             formattedText.Append(' ');

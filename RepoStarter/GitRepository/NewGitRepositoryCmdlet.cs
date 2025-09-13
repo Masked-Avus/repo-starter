@@ -40,16 +40,16 @@ namespace RepoStarter.GitRepository
                 return;
             }
 
-            Directory ??= ".\\";
-            DefaultBranch ??= "master";
+            Directory ??= Resources.Defaults.CurrentDirectory;
+            DefaultBranch ??= Resources.Defaults.InitialBranch;
 
             using PowerShell instance = PowerShell.Create();
 
             instance.AddScript($"Set-Location {Directory}");
             instance.AddScript($"git init --initial-branch {DefaultBranch}");
-            instance.CreateDirectory("src");
-            instance.CreateDirectory("tests");
-            instance.CreateFile(".gitignore");
+            instance.CreateDirectory(Resources.ItemNames.SourceFolder);
+            instance.CreateDirectory(Resources.ItemNames.TestsFolder);
+            instance.CreateFile(Resources.ItemNames.GitIgnore);
             instance.AddScript($"New-ReadMe -ProjectName {ProjectName} -Directory {Directory}");
             instance.AddScript($"New-ChangeLog -Directory {Directory}");
             instance.AddScript(

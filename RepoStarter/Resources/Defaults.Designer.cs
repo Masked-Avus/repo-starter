@@ -22,14 +22,14 @@ namespace RepoStarter.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ItemNames {
+    internal class Defaults {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ItemNames() {
+        internal Defaults() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace RepoStarter.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("RepoStarter.Resources.ItemNames", typeof(ItemNames).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("RepoStarter.Resources.Defaults", typeof(Defaults).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,56 +61,74 @@ namespace RepoStarter.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CHANGELOG.md.
+        ///   Looks up a localized string similar to  -.
         /// </summary>
-        internal static string ChangeLog {
+        internal static string ChangeLogBody {
             get {
-                return ResourceManager.GetString("ChangeLog", resourceCulture);
+                return ResourceManager.GetString("ChangeLogBody", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .gitignore.
+        ///   Looks up a localized string similar to Version History.
         /// </summary>
-        internal static string GitIgnore {
+        internal static string ChangeLogTitle {
             get {
-                return ResourceManager.GetString("GitIgnore", resourceCulture);
+                return ResourceManager.GetString("ChangeLogTitle", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to LICENSE.md.
+        ///   Looks up a localized string similar to .\.
         /// </summary>
-        internal static string License {
+        internal static string CurrentDirectory {
             get {
-                return ResourceManager.GetString("License", resourceCulture);
+                return ResourceManager.GetString("CurrentDirectory", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to README.md.
+        ///   Looks up a localized string similar to Heading.
         /// </summary>
-        internal static string ReadMe {
+        internal static string HeadingText {
             get {
-                return ResourceManager.GetString("ReadMe", resourceCulture);
+                return ResourceManager.GetString("HeadingText", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to src.
+        ///   Looks up a localized string similar to master.
         /// </summary>
-        internal static string SourceFolder {
+        internal static string InitialBranch {
             get {
-                return ResourceManager.GetString("SourceFolder", resourceCulture);
+                return ResourceManager.GetString("InitialBranch", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to tests.
+        ///   Looks up a localized string similar to logo.
         /// </summary>
-        internal static string TestsFolder {
+        internal static string LogoText {
             get {
-                return ResourceManager.GetString("TestsFolder", resourceCulture);
+                return ResourceManager.GetString("LogoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project.
+        /// </summary>
+        internal static string ProjectName {
+            get {
+                return ResourceManager.GetString("ProjectName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TODO.
+        /// </summary>
+        internal static string ReadMeSectionContents {
+            get {
+                return ResourceManager.GetString("ReadMeSectionContents", resourceCulture);
             }
         }
     }

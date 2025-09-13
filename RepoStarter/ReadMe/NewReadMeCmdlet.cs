@@ -97,7 +97,7 @@ namespace RepoStarter.ReadMe
             {
                 writer.WriteLine(_readMeFile.Headings[i].FormattedText);
                 writer.WriteLine();
-                writer.WriteLine(ReadMeFile.SectionDefaultContents);
+                writer.WriteLine(Resources.Defaults.ReadMeSectionContents);
 
                 if (i < (_readMeFile.Headings.Count - 1))
                 {
