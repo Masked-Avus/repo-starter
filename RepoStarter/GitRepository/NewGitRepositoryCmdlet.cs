@@ -9,6 +9,14 @@ namespace RepoStarter.GitRepository
         [Alias("Project", "Proj")]
         public string? ProjectName { get; set; }
 
+        [Parameter(Mandatory = true)]
+        [Alias("Org")]
+        public string? Organization { get; set; }
+
+        [Parameter(Mandatory = true)]
+        [Alias("License", "Lic")]
+        public string? LicenseType { get; set; }
+
         [Parameter]
         [Alias("Dir")]
         public string? Directory { get; set; }
@@ -16,6 +24,9 @@ namespace RepoStarter.GitRepository
         [Parameter]
         [Alias("InitialBranch", "Branch", "Br")]
         public string? DefaultBranch { get; set; }
+
+        [Parameter]
+        public int Year { get; set; } = DateTime.Now.Year;
 
         protected override void ProcessRecord()
         {
@@ -37,6 +48,9 @@ namespace RepoStarter.GitRepository
             instance.CreateFile(".gitignore");
             instance.AddScript($"New-ReadMe -ProjectName {ProjectName} -Directory {Directory}");
             instance.AddScript($"New-ChangeLog -Directory {Directory}");
+            instance.AddScript(
+                $"New-License -LicenseType {LicenseType} -Organization {Organization} -ProjectName {ProjectName} -Year {Year} -Directory {Directory}"
+                );
 
             instance.Invoke();
         }

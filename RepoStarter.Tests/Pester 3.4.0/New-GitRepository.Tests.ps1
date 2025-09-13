@@ -8,9 +8,13 @@ Describe "New-GitRepository" {
 
         New-Item -Path $outputDirectory -ItemType "Directory"
 
-        New-GitRepository -ProjectName "Testing New-GitRepository" -Directory $outputDirectory -DefaultBranch "main"
+        New-GitRepository -ProjectName "Testing New-GitRepository" -Directory $outputDirectory -DefaultBranch "main" -LicenseType "gpl3" -Year 2025 -Organization "New-GitRepository.Tests"
 
-        # Since .git files are hidden when created, you will have to check for its existence manually.
+        $gitFolderPath = [System.String]::Concat($outputDirectory, "\.git\")
+
+        It "creates a Git repository" {
+            Test-Path $gitFolderPath | Should Be $true
+        }
 
         $sourceFolderPath = [System.String]::Concat($outputDirectory, "\src\")
 
@@ -38,6 +42,16 @@ Describe "New-GitRepository" {
 
         It "creates a CHANGELOG in output path" {
             Test-Path $changeLogPath | Should Be $true
+        }
+
+        $licensePath = [System.String]::Concat($outputDirectory, "\LICENSE.md")
+
+        # For some unknown reason, whenever I run this test, the LICENSE does not get generated,
+        #     so this test inevitably fails.
+        # But when I use New-GitRepository in regular contexts (i.e., calling it from PowerShell
+        #     and not from this test file), it generates everything completely fine.
+        It "creates a LICENSE in output path" {
+            Test-Path $licensePath | Should Be $true
         }
 
         $gitIgnorePath = [System.String]::Concat($outputDirectory, "\.gitignore")

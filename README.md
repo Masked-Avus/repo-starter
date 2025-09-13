@@ -55,12 +55,13 @@ New-License -LicenseType "gpl3" -Directory ".\" -ProjectName "Cool Logger" -Orga
 
 ### `New-GitRepository` cmdlet
 
-The `New-GitRepository` cmdlet will generate a new Git repository, along with a couple starter folders, a `.gitignore, `a `README`, and a `CHANGELOG`. It requires a `-ProjectName` argument for the `README`, and it can take the following optional commands as well:
+The `New-GitRepository` cmdlet will generate a new Git repository and a couple starter folders along with a `.gitignore`, `README`, `CHANGELOG`, and `LICENSE`. It requires `-ProjectName`, `-Organization`, and `-LicenseType` values for the `README` and `LICENSE`, and it can take the following optional commands as well:
 - `-Directory`: Sets the location where all items will be created. Defaults to the current directory if not specified.
 - `-DefaultBranch`: Sets name of the repository's default branch. Defaults to `master` if not specified.
+- `-Year`: The year associated with the given project. Defaults to the current year if not specified.
 
 ```powershell
-New-GitRepository -ProjectName "Cool Logger" -DefaultBranch "master" -Directory "C:\Users\John\Dev\cool-logger"
+New-GitRepository -ProjectName "Cool Logger" -Organization "John Doe" -LicenseType "MIT" -DefaultBranch "master" -Directory "C:\Users\John\Dev\cool-logger"
 ```
 
 ## Dependencies
@@ -89,4 +90,8 @@ For instructions on installing custom PowerShell modules, check out the official
 - [X] Generation of `README` files.
 - [X] Generation of `CHANGELOG` files.
 - [X] Generation of `LICENSE` files.
-- [ ] Cmdlet that creates a suite of items for a basic GitHub repository. (Partially met)
+- [X] Cmdlet that creates a suite of items for a basic GitHub repository.
+
+## Credit
+
+The templates for generated licenses are found in [this GitHub repository](https://github.com/licenses/license-templates). Each type of license is copyrighted by its respective author(s).
