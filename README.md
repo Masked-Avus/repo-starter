@@ -9,6 +9,7 @@ Repo Starter is a PowerShell binary module used for creating elements commonly f
 At the moment, Repo Starter itself creates the following (See "Development Roadmap" for more on future additions.):
 - `README.md`
 - `CHANGELOG.md`
+- `LICENSE.md`
 - Empty `.gitignore`
 - `src` folder
 - `tests` folder
@@ -38,14 +39,28 @@ The `New-ChangeLog` cmdlet will generate an empty `CHANGELOG.md` file by default
 New-ChangeLog -Directory ".\" -Versions "v0.2.0", "v0.1.0" -Title "Cool Logger's History"
 ```
 
-### `New-GitRepository`
+### `New-License` cmdlet
+
+The `New-License` cmdlet will generate a `LICENSE.md` file. It requires a `-LicenseType` argument that is given the case-insensitive name of a supported type of open-source license. As of right now, The following open-source licenses are supported: `"Apache"`, `"BSD3"`, `"GPL3"`, `"MIT"`, `"MPL"`, `"PublicDomain"`/`"Public"`, and `"zlib"`. The cmdlet can take the following additional arguments:
+- `-Directory`: Sets the location where the `LICENSE` is to be generated. Defaults to the current directory if not specified.
+- `-ProjectName`: Name of the project to be mentioned in licenses like BSD3 and GPL3.
+- `-Organization`: Name of the owner (individual or group) of the repository.
+- `-Year`: The year associated with the given project. Defaults to the current year if not specified.
+
+*Certain licenses require `-ProjectName` and/or `-Organization` values.* For example, an MIT license requires the former while GPL3 requires both. Values not used by certain licenses are ignored.
+
+```powershell
+New-License -LicenseType "gpl3" -Directory ".\" -ProjectName "Cool Logger" -Organization "John Doe" -Year 2025
+```
+
+### `New-GitRepository` cmdlet
 
 The `New-GitRepository` cmdlet will generate a new Git repository, along with a couple starter folders, a `.gitignore, `a `README`, and a `CHANGELOG`. It requires a `-ProjectName` argument for the `README`, and it can take the following optional commands as well:
 - `-Directory`: Sets the location where all items will be created. Defaults to the current directory if not specified.
 - `-DefaultBranch`: Sets name of the repository's default branch. Defaults to `master` if not specified.
 
 ```powershell
-New-GitRepository -ProjectName "Cool Logger" -DefaultBranch "master" -Directory "C:\Users\Hank\Dev\cool-logger"
+New-GitRepository -ProjectName "Cool Logger" -DefaultBranch "master" -Directory "C:\Users\John\Dev\cool-logger"
 ```
 
 ## Dependencies
@@ -73,5 +88,5 @@ For instructions on installing custom PowerShell modules, check out the official
 
 - [X] Generation of `README` files.
 - [X] Generation of `CHANGELOG` files.
-- [ ] Generation of `LICENSE` files.
+- [X] Generation of `LICENSE` files.
 - [ ] Cmdlet that creates a suite of items for a basic GitHub repository. (Partially met)
