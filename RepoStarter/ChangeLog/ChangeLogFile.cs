@@ -5,16 +5,14 @@ namespace RepoStarter.ChangeLog
 {
     internal sealed class ChangeLogFile
     {
-        private const int HeadingLevel = 2;
-
         private readonly FileInfo _fileInfo;
-        private readonly Heading _title = new(1, Resources.Defaults.ChangeLogTitle);
+        private readonly Heading _title = new(Heading.Level.One, Resources.Defaults.ChangeLogTitle);
         private readonly List<Heading> _versionHeadings = [];
 
         internal ChangeLogFile(string directory, string title, string[] versions)
         {
             _fileInfo = new(RepositoryPath.Create(directory, Resources.ItemNames.ChangeLog));
-            _title = new(1, (!string.IsNullOrWhiteSpace(title))
+            _title = new(Heading.Level.One, (!string.IsNullOrWhiteSpace(title))
                 ? title
                 : Resources.Defaults.ChangeLogTitle);
             _versionHeadings = CreateHeadings(versions);
@@ -55,7 +53,7 @@ namespace RepoStarter.ChangeLog
                     continue;
                 }
 
-                headings.Add(new(HeadingLevel, version));
+                headings.Add(new(Heading.Level.Two, version));
             }
 
             return headings;

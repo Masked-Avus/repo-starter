@@ -4,49 +4,36 @@ namespace RepoStarter.Markdown
 {
     internal sealed class Heading
     {
-        private const int MinLevel = 1;
-        private const int MaxLevel = 6;
-
-        private int _level;
-
-        internal int Level
+        public enum Level
         {
-            get => _level;
-
-            private set
-            {
-                if (value > MaxLevel)
-                {
-                    _level = MaxLevel;
-                }
-                else if (value < MinLevel)
-                {
-                    _level = MinLevel;
-                }
-                else
-                {
-                    _level = value;
-                }
-            }
+            One = 1,
+            Two = 2,
+            Three = 3,
+            Four = 4,
+            Five = 5,
+            Six = 6
         }
+
+        private readonly Level _level;
 
         internal string Text { get; }
-
         internal string FormattedText { get; }
 
-        internal Heading(int level, string text)
+        internal Heading(Level level, string text)
         {
-            Level = level;
+            _level = level;
             Text = !string.IsNullOrEmpty(text) ? text : Resources.Defaults.HeadingText;
-            FormattedText = CreateFormattedText(Level, Text);
+            FormattedText = CreateFormattedText(_level, Text);
         }
 
-        private static string CreateFormattedText(int level, string text)
+        private static string CreateFormattedText(Level level, string text)
         {
             StringBuilder formattedText = new(100);
             const char Delimiter = '#';
 
-            for (int i = 0; i < level; i++)
+            int count = (int)level;
+
+            for (int i = 0; i < count; i++)
             {
                 formattedText.Append(Delimiter);
             }

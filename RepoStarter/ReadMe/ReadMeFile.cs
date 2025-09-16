@@ -23,13 +23,13 @@ namespace RepoStarter.ReadMe
             
             _headings =
             [
-                new(1, _projectName),
-                new(2, ReadMeHeadings.Description),
-                new(2, ReadMeHeadings.Features),
-                new(2, ReadMeHeadings.Usage),
-                new(2, ReadMeHeadings.Installation),
-                new(2, ReadMeHeadings.DevelopmentRoadmap),
-                new(2, ReadMeHeadings.Contributors)
+                new(Heading.Level.One, _projectName),
+                new(Heading.Level.Two, ReadMeHeadings.Description),
+                new(Heading.Level.Two, ReadMeHeadings.Features),
+                new(Heading.Level.Two, ReadMeHeadings.Usage),
+                new(Heading.Level.Two, ReadMeHeadings.Installation),
+                new(Heading.Level.Two, ReadMeHeadings.DevelopmentRoadmap),
+                new(Heading.Level.Two, ReadMeHeadings.Contributors)
             ];
         }
 
