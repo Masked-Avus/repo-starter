@@ -72,8 +72,11 @@ The following NuGet packages are external dependencies of Repo Starter:
 - `Microsoft.PowerShell.5.1.ReferenceAssemblies` (no need to include this dependency in published projects)
 
 ## Installation
+### Official Instructions on Installing PowerShell Modules
 
-These instructions detail how to compile Repo Starter from source.
+For instructions on installing custom PowerShell modules onto your system, check out the official documentation [here](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_modules?view=powershell-7.5).
+
+### Compiling from Source
 
 This project was originally made using Visual Studio 2022 (Community Edition in my case), so a compatible version of said IDE will be required.
 
@@ -85,14 +88,11 @@ The `RepoStarter` project should target .NET Framework 4.8.1 and use C# 12.0. In
 4. Build the project via the Visual Studio UI or by running either the `dotnet build` or `dotnet publish` commands.
 5. Copy and paste the DLL found at the end of the `RepoStarter\bin\` directory into a path where PowerShell can find it.
 
-For instructions on installing custom PowerShell modules, check out the official documentation [here](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_modules?view=powershell-7.5).
+### Using Precompiled Binary
 
-## Development Roadmap
-
-- [X] Generation of `README` files.
-- [X] Generation of `CHANGELOG` files.
-- [X] Generation of `LICENSE` files.
-- [X] Cmdlet that creates a suite of items for a basic GitHub repository.
+If you just want to get up and going with Repo Starter, you can do the following:
+1. Download a [release](https://github.com/Masked-Avus/repo-starter/releases).
+2. Copy and paste the `RepoStarter.dll` file found within the downloaded archive into a path where PowerShell can find it.
 
 ## Credit
 
