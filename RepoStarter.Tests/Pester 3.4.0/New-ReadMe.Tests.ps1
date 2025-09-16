@@ -12,7 +12,10 @@ Describe "New-ReadMe" {
             Remove-Item -Path $outputPath
         }
 
-        New-ReadMe -ProjectName "Testing New-ReadMe" -Directory $outputDirectory
+        $logoPath = ".\Images\TestLogo.png"
+        $logoText = "Test Logo"
+
+        New-ReadMe -ProjectName "Testing New-ReadMe" -Directory $outputDirectory -LogoPath $logoPath -LogoText $logoText
 
         It "creates README in output path" {
             Test-Path $outputPath | Should Be $true
