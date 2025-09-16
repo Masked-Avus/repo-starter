@@ -68,31 +68,22 @@ New-GitRepository -ProjectName "Cool Logger" -Organization "John Doe" -LicenseTy
 
 ## Dependencies
 
-The following NuGet packages are external dependencies of Repo Starter:
-- `Microsoft.PowerShell.5.1.ReferenceAssemblies` (no need to include this dependency in published projects)
+Repo Starter has the following external dependencies:
+- `Microsoft.PowerShell.5.1.ReferenceAssemblies` 1.0.0 (no need to include this dependency in published projects)
 
-## Installation
-### Official Instructions on Installing PowerShell Modules
-
-For instructions on installing custom PowerShell modules onto your system, check out the official documentation [here](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_modules?view=powershell-7.5).
-
-### Compiling from Source
+## Compiling from Source
 
 This project was originally made using Visual Studio 2022 (Community Edition in my case), so a compatible version of said IDE will be required.
 
 The `RepoStarter` project should target .NET Framework 4.8.1 and use C# 12.0. In fact, those settings are already present in the `.csproj` file.
 
-1. Create a new Git repository on your machine and `git clone` this one.
-2. Open up the Visual Studio solution.
-4. Install the required NuGet packages (see "Dependencies" for which ones) via Visual Studio's NuGet UI or by running the `dotnet add package` command.
+1. `git clone` this repository using the Git URL.
+2. Open up Visual Studio via the `RepoStarter.sln` file.
+3. Install the required NuGet packages (see "Dependencies" for which ones) via Visual Studio's NuGet UI or by running the `dotnet add package` command.
 4. Build the project via the Visual Studio UI or by running either the `dotnet build` or `dotnet publish` commands.
 5. Copy and paste the DLL found at the end of the `RepoStarter\bin\` directory into a path where PowerShell can find it.
 
-### Using Precompiled Binary
-
-If you just want to get up and going with Repo Starter, you can do the following:
-1. Download a [release](https://github.com/Masked-Avus/repo-starter/releases).
-2. Copy and paste the `RepoStarter.dll` file found within the downloaded archive into a path where PowerShell can find it.
+For instructions on installing custom PowerShell modules onto your system, check out the official documentation [here](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_modules?view=powershell-7.5).
 
 ## Credit
 

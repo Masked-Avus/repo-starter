@@ -1,5 +1,8 @@
 # Version History
 
+## Version 1.0.0
+- Initial release version
+
 ## Version 0.5.0
 - Final pre-release version
 
