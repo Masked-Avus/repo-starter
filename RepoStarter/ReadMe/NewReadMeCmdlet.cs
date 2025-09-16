@@ -28,7 +28,11 @@ namespace RepoStarter.ReadMe
             {
                 if (string.IsNullOrWhiteSpace(ProjectName))
                 {
-                    throw new ArgumentNullException();
+                    throw new ArgumentException();
+                }
+                else if (!string.IsNullOrWhiteSpace(LogoPath) && !File.Exists(LogoPath))
+                {
+                    throw new ArgumentException();
                 }
 
                 RepositoryPath.EnsureDirectoryExists(Directory);

@@ -26,6 +26,13 @@ namespace RepoStarter.GitRepository
         public string Directory { get; set; } = System.IO.Directory.GetCurrentDirectory();
 
         [Parameter]
+        [Alias(AttributeConstants.Abbreviations.LogoPath)]
+        public string LogoPath { get; set; } = string.Empty;
+
+        [Parameter]
+        public string LogoText { get; set; } = Resources.Defaults.LogoText;
+
+        [Parameter]
         [Alias(
             AttributeConstants.InitialBranch,
             AttributeConstants.Branch,
@@ -46,6 +53,11 @@ namespace RepoStarter.GitRepository
             else if (!RepositoryPath.IsValid(Directory))
             {
                 this.ReportException(new FormatException(), ErrorCategory.SyntaxError);
+                return;
+            }
+            else if (!string.IsNullOrWhiteSpace(LogoPath) && !File.Exists(LogoPath))
+            {
+                this.ReportException(new ArgumentException(), ErrorCategory.SyntaxError);
                 return;
             }
 
@@ -88,7 +100,9 @@ namespace RepoStarter.GitRepository
             NewReadMeCmdlet newReadMe = new()
             {
                 ProjectName = ProjectName,
-                Directory = Directory
+                Directory = Directory,
+                LogoPath = LogoPath,
+                LogoText = LogoText,
             };
 
             newReadMe.Initiate();

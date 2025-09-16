@@ -2,23 +2,24 @@
 {
     internal sealed class Logo
     {
-        internal FileInfo File { get; }
-        internal bool Exists => File is not null;
-        internal string Text { get; }
-        internal string Markdown => $"![{Text}]({File.FullName})";
+        private readonly FileInfo _fileInfo;
+        private readonly string _text;
+
+        internal bool Exists => _fileInfo.Exists;
+        internal string Markdown => $"![{_text}]({_fileInfo.FullName})";
 
         internal Logo(string path) : this(path, Resources.Defaults.LogoText) { }
 
         internal Logo(string path, string text)
         {
-            File = new FileInfo(path);
+            _fileInfo = new FileInfo(path);
 
-            if (!File.Exists)
+            if (!_fileInfo.Exists)
             {
                 throw new FileNotFoundException();
             }
 
-            Text = !string.IsNullOrWhiteSpace(text) ? text : Resources.Defaults.LogoText;
+            _text = !string.IsNullOrWhiteSpace(text) ? text : Resources.Defaults.LogoText;
         }
     }
 }

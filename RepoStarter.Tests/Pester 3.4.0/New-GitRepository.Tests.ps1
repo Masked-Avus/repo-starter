@@ -8,7 +8,11 @@ Describe "New-GitRepository" {
 
         New-Item -Path $outputDirectory -ItemType "Directory"
 
-        New-GitRepository -ProjectName "Testing New-GitRepository" -Directory $outputDirectory -DefaultBranch "main" -LicenseType "gpl3" -Year 2025 -Organization "New-GitRepository.Tests"
+        $projectName = "Testing New-GitRepository"
+        $organization = "New-GitRepository.Tests"
+        $logoPath = ".\Images\TestLogo.png"
+
+        New-GitRepository -ProjectName $projectName  -Directory $outputDirectory -DefaultBranch "main" -LicenseType "gpl3" -Year 2025 -Organization $organization -LogoPath $logoPath -LogoText "Test Logo"
 
         $gitFolderPath = [System.String]::Concat($outputDirectory, "\.git\")
 

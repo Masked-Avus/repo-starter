@@ -59,9 +59,11 @@ The `New-GitRepository` cmdlet will generate a new Git repository and a couple s
 - `-Directory`: Sets the location where all items will be created. Defaults to the current directory if not specified.
 - `-DefaultBranch`: Sets name of the repository's default branch. Defaults to `master` if not specified.
 - `-Year`: The year associated with the given project. Defaults to the current year if not specified.
+- `-LogoPath`: Path of an image to be referenced at the top of the resulting file. Used for providing a logo.
+- `-LogoText`: Underlying text used within the Markdown link related to the logo. Ignored if `-LogoPath` is not provided.
 
 ```powershell
-New-GitRepository -ProjectName "Cool Logger" -Organization "John Doe" -LicenseType "MIT" -DefaultBranch "master" -Directory "C:\Users\John\Dev\cool-logger"
+New-GitRepository -ProjectName "Cool Logger" -Organization "John Doe" -LicenseType "MIT" -DefaultBranch "master" -Directory "C:\Users\John\Dev\cool-logger" -Path "images/CoolLogger.png" -LogoText "My fancy project logo!"
 ```
 
 ## Dependencies
